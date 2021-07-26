@@ -219,7 +219,7 @@ class HomePage extends GetView<HomeController> {
                     width: 165.w,
                     child: Text("name"),
                     decoration: BoxDecoration(
-                        color: Colors.amber,
+                        color: AppColors.fon,
                         borderRadius: BorderRadius.circular(15)),
                   );
                 },
