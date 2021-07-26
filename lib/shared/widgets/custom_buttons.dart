@@ -68,7 +68,13 @@ class CustomBackSingInButton extends StatelessWidget {
 }
 
 class CustomBackButton extends StatelessWidget {
-  const CustomBackButton({Key? key}) : super(key: key);
+  final double? width;
+  final double? height;
+  const CustomBackButton({
+    Key? key,
+    this.width,
+    this.height,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +90,8 @@ class CustomBackButton extends StatelessWidget {
         ),
         child: CustomImage(
           image: AppImages.backButton,
+          width: width,
+          height: height,
         ),
       ),
     );
@@ -91,18 +99,22 @@ class CustomBackButton extends StatelessWidget {
 }
 
 class CustomTextButton extends StatelessWidget {
-  const CustomTextButton({Key? key}) : super(key: key);
+  final String text;
+  final VoidCallback onPressed;
+  const CustomTextButton({
+    Key? key,
+    this.text = AppStrings.forgotPassword,
+    required this.onPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Get.toNamed(ResetPasswordPage.route);
-      },
+      onTap: onPressed,
       child: Container(
         padding: EdgeInsets.only(bottom: 4.h, top: 12),
         child: Text(
-          AppStrings.forgotPassword,
+          text,
           style: AppTextStyles.interMed12.copyWith(
             color: AppColors.accent,
           ),

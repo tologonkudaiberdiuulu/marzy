@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marzy/features/auth/reset_password/contoller/reset_password_contoller.dart';
+import 'package:marzy/shared/widgets/counter_widget.dart';
+import 'package:marzy/features/profile/controller/profile_controller.dart';
+import 'package:marzy/shared/enums/AppEnums.dart';
 import 'package:marzy/shared/localization/strings_ru.dart';
 import 'package:marzy/shared/presentation/colors.dart';
 import 'package:marzy/shared/presentation/text_styles.dart';
@@ -8,21 +10,25 @@ import 'package:marzy/shared/widgets/custom_buttons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marzy/shared/widgets/loaders.dart';
 
-import '../../../../shared/widgets/counter_widget.dart';
+class ProfileEditVerifyPage extends GetView<ProfileController> {
+  static const route = '/profile_edit_verify';
 
-class ResetPasswordCode extends GetView<ResetPasswordController> {
-  static const route = '/reset_password_code';
-  ResetPasswordCode({Key? key}) : super(key: key);
+  ProfileEditVerifyPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final editingType = Get.arguments as AccountEditingType;
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppStrings.restorePassword),
+        title: Text(editingType.title),
         automaticallyImplyLeading: false,
         leading: CustomBackButton(),
         actions: [
-          CounterWidget(title: '2/3'),
+          CounterWidget(
+            title: '2/3',
+            width: 30.w,
+            height: 30.w,
+          ),
         ],
       ),
       body: Padding(
@@ -40,7 +46,7 @@ class ResetPasswordCode extends GetView<ResetPasswordController> {
                   style: AppTextStyles.interMed12,
                   children: [
                     TextSpan(
-                      text: controller.login,
+                      text: controller.phone,
                       style: AppTextStyles.interMed12.copyWith(
                         color: AppColors.accent,
                       ),
@@ -60,16 +66,16 @@ class ResetPasswordCode extends GetView<ResetPasswordController> {
                 },
                 obscureText: false,
               ),
-              SizedBox(height: 100.h),
-              Obx(
-                () => ElevatedButton(
-                  onPressed: controller.submittingCode.isFalse
-                      ? controller.submitCode
-                      : null,
-                  child: controller.submittingCode.isFalse
-                      ? Text(AppStrings.continue2)
-                      : CircularLoader(),
-                ),
+              Spacer(),
+              ElevatedButton(
+                onPressed: controller.submittingCode.isFalse
+                    ? () {
+                        controller.submitCode(editingType);
+                      }
+                    : null,
+                child: controller.submittingCode.isFalse
+                    ? Text(AppStrings.continue2)
+                    : CircularLoader(),
               ),
             ],
           ),

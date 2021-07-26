@@ -4,9 +4,13 @@ import 'package:marzy/shared/presentation/text_styles.dart';
 
 class CounterWidget extends StatelessWidget {
   final String title;
+  final double width;
+  final double height;
   const CounterWidget({
     Key? key,
     required this.title,
+    this.width = 28,
+    this.height = 28,
   }) : super(key: key);
 
   @override
@@ -15,8 +19,8 @@ class CounterWidget extends StatelessWidget {
       alignment: Alignment.center,
       padding: EdgeInsets.only(right: 16),
       child: Container(
-        height: 28,
-        width: 28,
+        height: height,
+        width: width,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: AppColors.fonGrey,

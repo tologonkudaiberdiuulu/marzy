@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marzy/features/profile/controller/profile_controller.dart';
+import 'package:marzy/shared/enums/AppEnums.dart';
 import 'package:marzy/shared/widgets/counter_widget.dart';
-import 'package:marzy/features/auth/sing_up/contoller/sing_up_contoller.dart';
 import 'package:marzy/shared/localization/strings_ru.dart';
 import 'package:marzy/shared/widgets/custom_buttons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marzy/shared/widgets/custom_text_fiedl.dart';
 import 'package:marzy/shared/widgets/loaders.dart';
 
-class SingUpPage extends GetView<SingUpController> {
-  static const route = '/sing_up';
-  SingUpPage({Key? key}) : super(key: key);
+class ProfileEditCompletePage extends GetView<ProfileController> {
+  static const route = '/profile_edit_complete';
+  ProfileEditCompletePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final editingType = Get.arguments as AccountEditingType;
     return Scaffold(
       appBar: AppBar(
         title: Text(AppStrings.register),
@@ -21,7 +23,9 @@ class SingUpPage extends GetView<SingUpController> {
         leading: CustomBackButton(),
         actions: [
           CounterWidget(
-            title: '1/4',
+            title: '3/3',
+            width: 30.w,
+            height: 30.w,
           ),
         ],
       ),
@@ -33,28 +37,29 @@ class SingUpPage extends GetView<SingUpController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              CustomTextField(
-                title: AppStrings.phoneNumber,
-                controller: controller.phoneController,
-                validator: (value) {
-                  return controller.phoneError.value;
-                },
-                obscureText: false,
-              ),
-              SizedBox(height: 16.h),
-              CustomTextField(
-                title: AppStrings.email,
-                obscureText: true,
-                validator: (value) {
-                  return null;
-                },
-                controller: controller.emailController,
-              ),
+              if (editingType.title == AccountEditingType.phone.title)
+                CustomTextField(
+                  title: AppStrings.phoneNumber,
+                  controller: controller.phoneController,
+                  validator: (value) {
+                    return controller.phoneError.value;
+                  },
+                  obscureText: false,
+                )
+              else
+                CustomTextField(
+                  title: AppStrings.email,
+                  obscureText: true,
+                  validator: (value) {
+                    return null;
+                  },
+                  controller: controller.emailController,
+                ),
               SizedBox(height: 32.h),
               Obx(
                 () => ElevatedButton(
                   onPressed: controller.submittingLogin.isFalse
-                      ? controller.submitLogin
+                      ? controller.submitLoginOrPhone
                       : null,
                   child: controller.submittingLogin.isFalse
                       ? Text(AppStrings.continue2)

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:marzy/features/auth/reset_password/view/reset_password_page.dart';
 import 'package:marzy/shared/presentation/text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marzy/shared/widgets/custom_buttons.dart';
+import 'package:get/get.dart';
 
 class CustomTextField extends StatelessWidget {
   final String title;
@@ -61,7 +63,11 @@ class PasswordTextField extends StatelessWidget {
               title,
               style: AppTextStyles.interMed12,
             ),
-            CustomTextButton(),
+            CustomTextButton(
+              onPressed: () {
+                Get.toNamed(ResetPasswordPage.route);
+              },
+            ),
           ],
         ),
         TextFormField(

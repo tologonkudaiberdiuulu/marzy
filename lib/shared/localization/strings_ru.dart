@@ -18,4 +18,9 @@ class AppStrings {
   static const String reset1 = 'Мы отправили вам код подтверждение на номер ';
   static const String reset2 =
       ', впишите его в форму ниже, чтобы продолжить регистраицию';
+  static const String profile = 'Аккаунт';
+  static const String profileDeliverGuy = "Войти как доставщик";
+  static const String support = "Поддержка";
+  static const String logOut = "Выйти";
+  static const String confirm = 'Подтвердить';
 }

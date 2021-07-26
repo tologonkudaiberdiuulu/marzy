@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marzy/features/auth/reset_password/view/counter_widget.dart';
+import 'package:marzy/shared/widgets/counter_widget.dart';
 import 'package:marzy/features/auth/sing_up/contoller/sing_up_contoller.dart';
 import 'package:marzy/shared/localization/strings_ru.dart';
 import 'package:marzy/shared/widgets/custom_buttons.dart';

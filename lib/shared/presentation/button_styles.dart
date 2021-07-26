@@ -17,4 +17,20 @@ class ButtonStyles {
       ),
     ),
   );
+
+  static var selectedButtonStyle = ButtonStyle(
+    padding: MaterialStateProperty.all(EdgeInsets.only(left: 20, right: 20)),
+    minimumSize: MaterialStateProperty.all(Size(150, 50)),
+    textStyle: MaterialStateProperty.all(
+        AppTextStyles.interMed14.copyWith(color: AppColors.black)),
+    foregroundColor: MaterialStateProperty.all(AppColors.white),
+    backgroundColor: MaterialStateProperty.all(AppColors.accent),
+    shape: MaterialStateProperty.all(
+      RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(8.0),
+        ),
+      ),
+    ),
+  );
 }

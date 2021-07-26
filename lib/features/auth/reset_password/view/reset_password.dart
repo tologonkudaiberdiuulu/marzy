@@ -7,7 +7,7 @@ import 'package:marzy/shared/widgets/custom_text_fiedl.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marzy/shared/widgets/loaders.dart';
 
-import 'counter_widget.dart';
+import '../../../../shared/widgets/counter_widget.dart';
 
 class ResetPassword extends GetView<ResetPasswordController> {
   static const route = '/reset_password_2';

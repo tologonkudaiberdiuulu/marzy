@@ -4,6 +4,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 class AppImages {
   static const splashBg = 'assets/images/splash_bg.png';
   static const backButton = 'assets/icons/back_button.svg';
+  static const locationButton = 'assets/images/location.svg';
+  static const arrowRight = 'assets/images/arrow_right.svg';
+  static const profileButton = 'assets/images/profile.svg';
+  static const searchButton = 'assets/images/search.svg';
 }
 
 class CustomImage extends StatelessWidget {
